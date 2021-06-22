@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User page</title>
+</head>
+<body>
+<a href="/logout">logout</a>
+<h2>User details</h2>
+<table border="1">
+    <tr>
+        <th>Name</th><th>Surname</th><th>Age</th><th>E-mail</th><th>Username</th><th>Role</th>
+    </tr>
+        <tr>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.surname}"></td>
+            <td th:text="${user.age}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.username}"></td>
+            <td>
+                <th:block th:each="role : ${user.roles}">
+                    <span th:text="${role.role}"></span>
+                </th:block>
+            </td>
+        </tr>
+</table>
+</body>
+</html>

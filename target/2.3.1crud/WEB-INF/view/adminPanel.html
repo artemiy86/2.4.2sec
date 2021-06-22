@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<a href="/logout">logout</a>
+<h2>Users list:</h2>
+<table border="1">
+    <tr>
+        <th>Name</th><th>Surname</th><th>Age</th><th>E-mail</th><th>Username</th><th>Roles</th><th></th><th></th>
+    </tr>
+    <th:block th:each="user : ${users}">
+        <tr>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.surname}"></td>
+            <td th:text="${user.age}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.username}"></td>
+            <td>
+                <th:block th:each="role : ${user.roles}">
+                    <span th:text="${role.role}"></span>
+                </th:block>
+            </td>
+            <td><a th:href="@{/admin/edit(id=${user.id})}">Edit</a></td>
+            <td><a th:href="@{/admin/delete(id=${user.id})}">Delete</td>
+        </tr>
+    </th:block>
+</table>
+</br>
+<a href="/admin/add">Add new user</a>
+</body>
+</html>

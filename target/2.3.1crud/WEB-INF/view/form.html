@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit user</title>
+</head>
+<body>
+<div th:switch="${action}">
+    <div th:case="add"><h2>Add new user</h2></div>
+    <div th:case="edit"><h2>Edit user <strong th:text="${user.name}"></strong> <strong th:text="${user.surname}"></strong></h2></div>
+
+    <form th:method="POST" th:action="${action}" th:object="${user}">
+        <input type="hidden" th:field="*{id}" id="id"/>
+        <table>
+            <tr>
+                <td><label for="name">Name</label></td>
+                <td><input type="text" th:field="*{name}" id="name" /></td>
+            </tr>
+            <tr>
+                <td><label for="surname">Surname</label></td>
+            <td><input type="text" th:field="*{surname}" id="surname" /></td>
+            </tr>
+            <tr>
+                <td><label for="age">Age</label></td>
+                <td><input type="text" th:field="*{age}" id="age" /></td>
+            </tr>
+            <tr>
+                <td><label for="email">E-mail</label></td>
+                <td><input type="text" th:field="*{email}" id="email" /></td>
+            </tr>
+            <tr>
+                <td><label for="email">Username</label></td>
+                <td><input type="text" th:field="*{username}" id="username" /></td>
+            </tr>
+            <tr>
+                <td><label for="email">Password</label></td>
+                <td><input type="password" th:field="*{password}" id="password" /></td>
+            </tr>
+            <tr>
+                <td><input type="submit" th:value="${action}" /></td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+</body>
+</html>
