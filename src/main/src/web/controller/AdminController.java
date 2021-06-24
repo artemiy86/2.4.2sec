@@ -3,10 +3,7 @@ package web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import web.model.Role;
 import web.model.User;
 import web.service.UserServiceImpl;
@@ -15,8 +12,14 @@ import web.service.UserServiceImpl;
 @RequestMapping("/admin")
 public class AdminController {
 
-    @Autowired
     private UserServiceImpl service;
+
+    public AdminController(){}
+
+    @Autowired
+    public AdminController(UserServiceImpl service) {
+        this.service = service;
+    }
 
     @GetMapping
     public String getAdminPage(ModelMap model){
@@ -24,7 +27,7 @@ public class AdminController {
         return "adminPanel";
     }
 
-    @GetMapping("/delete")
+    @DeleteMapping("/delete")
     public String deleteUser(@RequestParam(value = "id") long id){
         service.deleteUser(id);
         return "redirect:/admin";

@@ -27,8 +27,21 @@
                     <span th:text="${role.role}"></span>
                 </th:block>
             </td>
-            <td><a th:href="@{/admin/edit(id=${user.id})}">Edit</a></td>
-            <td><a th:href="@{/admin/delete(id=${user.id})}">Delete</td>
+            <!--td><a th:href="@{/admin/edit(id=${user.id})}">Edit</a></td>
+            <td><a th:href="@{/admin/delete(id=${user.id})}">Delete</td-->
+            <td>
+                <form th:method="get" th:action="@{/admin/edit}">
+                    <input type="hidden" name="id" th:value="${user.id}" />
+                    <input type="submit" th:value="edit" />
+                </form>
+            </td>
+            <td>
+                <form th:method="delete" th:action="@{/admin/delete(id=${user.id})}">
+                    <!--input type="hidden" name="id" th:value="${user.id}"/-->
+                    <input type="submit" th:value="delete" />
+                </form>
+            </td>
+
         </tr>
     </th:block>
 </table>

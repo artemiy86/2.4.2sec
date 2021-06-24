@@ -1,5 +1,6 @@
 package web.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,6 +12,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     private UserDao userDao;
 
+    public UserDetailsServiceImpl(){}
+
+    @Autowired
     public UserDetailsServiceImpl(UserDao userDao) {
         this.userDao = userDao;
     }

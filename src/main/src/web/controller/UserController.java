@@ -15,8 +15,15 @@ import web.service.UserServiceImpl;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
+
     private UserServiceImpl service;
+
+    public  UserController(){}
+
+    @Autowired
+    public UserController(UserServiceImpl service) {
+        this.service = service;
+    }
 
     @GetMapping
     public String getRoot(@AuthenticationPrincipal User user, ModelMap model){
